@@ -12,7 +12,7 @@ The second argument is the type of socket. SOCK_STREAM means that data or charac
 """
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 if len(sys.argv) != 3:
-    print "Correct usage: script, IP address, port number"
+    print ("Correct usage: script, IP address, port number")
     exit()
 IP_address = str(sys.argv[1])
 Port = int(sys.argv[2])
