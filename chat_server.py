@@ -1,6 +1,6 @@
 import socket
 import select
-from thread import *
+from threading import *
 import sys
 
 
@@ -12,7 +12,7 @@ The second argument is the type of socket. SOCK_STREAM means that data or charac
 """
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 if len(sys.argv) != 3:
-    print "Correct usage: script, IP address, port number"
+    print("Correct usage: script, IP address, port number")
     exit()
 IP_address = str(sys.argv[1])
 Port = int(sys.argv[2])
@@ -29,7 +29,7 @@ def clientthread(conn, addr):
             try:     
                 message = conn.recv(2048)    
                 if message:
-                    print "<" + addr[0] + "> " + message
+                    print("<" + addr[0] + "> " + message)
                     message_to_send = "<" + addr[0] + "> " + message
                     broadcast(message_to_send,conn)
                     #prints the message and address of the user who just sent the message on the server terminal
@@ -58,7 +58,7 @@ while True:
     the IP address of the client that just connected
     """
     list_of_clients.append(conn)
-    print addr[0] + " connected"
+    print(addr[0] + " connected")
     #maintains a list of clients for ease of broadcasting a message to all available people in the chatroom
     #Prints the address of the person who just connected
     start_new_thread(clientthread,(conn,addr))
