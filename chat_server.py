@@ -1,6 +1,6 @@
 import socket
 import select
-from threading import *
+from _thread import *
 import sys
 
 
@@ -23,7 +23,7 @@ server.listen(100)
 list_of_clients=[]
 
 def clientthread(conn, addr):
-    conn.send("Welcome to this chatroom!")
+    conn.send(b"Welcome to this chatroom!")
     #sends a message to the client whose user object is conn
     while True:
             try:     
